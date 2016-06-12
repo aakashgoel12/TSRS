@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title>Create Driving Route</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+      <script type="text/javascript">
+      var map = null;
+      var directionsManager;
+      var directionsErrorEventObj;
+      var directionsUpdatedEventObj; 
+ 		var ar1 = window.jsinterface.arr1();
+       var ar2 = window.jsinterface.arr2();
+      function getMap()
+      {
+          map = new Microsoft.Maps.Map(document.getElementById('myMap'), {credentials: 'AoWSm3HfidkndUY_Wmbq9HYbE1K9RJGLT4VzHzuVAJ3-E1ZUqOk5fHOBdWjhkc5e'});
+      }
+      
+      function createDirectionsManager()
+      {
+          var displayMessage;
+          if (!directionsManager) 
+          {
+              directionsManager = new Microsoft.Maps.Directions.DirectionsManager(map);
+              displayMessage = 'Directions Module loaded\n';
+              displayMessage += 'Directions Manager loaded';
+          }
+          alert(displayMessage);
+          directionsManager.resetDirections();
+          directionsErrorEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsError', function(arg) { alert(arg.message) });
+          directionsUpdatedEventObj = Microsoft.Maps.Events.addHandler(directionsManager, 'directionsUpdated', function() { alert('Directions updated') });
+      }
+  
+      function createDrivingRoute()
+      {
+        if (!directionsManager) { createDirectionsManager(); }
+        directionsManager.resetDirections();
+        // Set Route Mode to driving 
+        directionsManager.setRequestOptions({ routeMode: Microsoft.Maps.Directions.RouteMode.driving });
+   
+	
+ var latLongArray1 = (ar1).split(",");
+
+         // Retrieve the latitude and longitude values- normalize the longitude value
+         var latVal1 = parseFloat(latLongArray1[0]);
+         var longVal1 = Microsoft.Maps.Location.normalizeLongitude(parseFloat(latLongArray1[1]));
+ var latLongArray2 = (ar2).split(",");
+
+         // Retrieve the latitude and longitude values- normalize the longitude value
+         var latVal2 = parseFloat(latLongArray2[0]);
+         var longVal2 = Microsoft.Maps.Location.normalizeLongitude(parseFloat(latLongArray2[1]));
+        var seattleWaypoint = new Microsoft.Maps.Directions.Waypoint({location: new Microsoft.Maps.Location( latVal1, longVal1)});
+        directionsManager.addWaypoint(seattleWaypoint);
+        var tacomaWaypoint = new Microsoft.Maps.Directions.Waypoint({location: new Microsoft.Maps.Location( latVal2, longVal2) });
+        directionsManager.addWaypoint(tacomaWaypoint);
+     
+        directionsManager.setRenderOptions({ itineraryContainer: document.getElementById('directionsItinerary') });
+        alert('Calculating directions...');
+        directionsManager.calculateDirections();
+      }
+
+      function createDirections() {
+        if (!directionsManager)
+        {
+          Microsoft.Maps.loadModule('Microsoft.Maps.Directions', { callback: createDrivingRoute });
+        }
+        else
+        {
+          createDrivingRoute();
+        }
+       }
+    
+      </script>
+   </head>
+ <body onload="getMap();">
+      <div id='myMap' style="position:relative; width:400px; height:400px;"></div>
+      <div>
+
+         <input type="button" value="CreateDrivingRoute" onclick="createDirections();" />
+      </div>
+      <div id='directionsItinerary'> </div> 
+   </body>
+</html>
+      

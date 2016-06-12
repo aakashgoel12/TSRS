@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title>Create Driving Route</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <script type="text/javascript">
+      //	var path = window.jsinterface.pth();
+	  //	function showimg()
+	  //	{
+	  	//	document.getElementById('myimg').src = path;
+	 // 	}
+	  </script>
+	  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script type="text/javascript">
+      		var path = window.jsinterface.pth();
+			$(document).ready(function() {
+			    var array1 = (path).split(",");
+			    var len = array1.length;
+ 				//var img = document.getElementById('myimg');
+        		//img.src ="http://www.cse.iitd.ac.in/lbs/" + array1[0];
+        	  		
+        	});
+	  </script>
+	 </head>
+	 <body>	  
+		<img src="#" id="myimg" name="slide" height=500 width=350/>
+			  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript">
+		var array1 = (path).split(",");
+			    var len = array1.length;
+		//alert(window.len);
+		var imgArray = new Array();
+        	for(var i=0;i<len-1;i++)
+        	{
+        	document.write("<img src='http://www.cse.iitd.ac.in/lbs/" + array1[i] + "' width='40' height='50' style='margin:10px;padding:1px'/>");
+        	
+        		imgArray[i] = new Image();
+				imgArray[i].src = "http://www.cse.iitd.ac.in/lbs/" + array1[i];
+						//alert(imgArray[i].src);
+				
+        	}      
+        var step=0;
+        function slideit()
+        {
+                  //  alert("helo");
+        
+            document.images.slide.src = eval("imgArray["+step+"].src");
+       	if(step<len-2)
+                step++;
+            else
+                step=0;
+            setTimeout("slideit()",2500);
+        }
+        
+        slideit();
+</script>
+	  </body>
+</html>

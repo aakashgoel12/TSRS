@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+   <head>
+      <title>Create Driving Route</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script type="text/javascript">
+      		var path = window.jsinterface.pth();
+			$(document).ready(function() {
+ 				var audio = document.getElementById('audio');
+        		var source = document.getElementById('myimg');
+        		source.src="http://www.cse.iitd.ac.in/lbs/" + path;
+        		audio.load(); 
+        		audio.play(); 
+        	});
+	  </script>
+	</head>
+	<body>
+	  	<audio id="audio" controls="controls">
+  			<source id="myimg" src="" type="audio/mpeg" >
+		</audio>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+ <!--    <Spinner 
+        android:id="@+id/spr_place_type"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"
+		android:layout_alignParentTop="true" />
+    
+    <Button
+        android:id="@+id/btn_find"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"		
+		android:layout_alignParentTop="true"
+		android:layout_toRightOf="@id/spr_place_type"
+		android:text="Search" />
+     <Spinner 
+        android:id="@+id/place_type"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"
+		android:layout_below="@+id/spr_place_type"
+		 />
+         
+    <Button
+        android:id="@+id/checkin"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"		
+				
+		android:layout_below="@id/btn_find"
+		android:layout_toRightOf="@id/place_type"
+		android:text="Check in" />
+    --> 
+          
+    <Button
+        android:id="@+id/btnCapturePicture"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"		
+		android:text="Check in" />
+		
+         <Button
+        android:id="@+id/Picture"
+		android:layout_width="wrap_content"
+		android:layout_height="60dp"		
+		android:text="Capture Image" />
+
+            <Button
+                android:id="@+id/Audio"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/Picture"
+                android:layout_marginTop="14dp"
+                android:text="Record Audio" />
+
+            <Button
+                android:id="@+id/form"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/Audio"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="17dp"
+                android:text="Fill Form" />
+
+</RelativeLayout>
